@@ -7,11 +7,11 @@ angular.module('myApp', [
 ]).
     config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, jwtInterceptorProvider) {
 
-        $urlRouterProvider.otherwise("/map/@9.8320,16.8734,2.38");
+        $urlRouterProvider.otherwise("/map");
 
         $stateProvider
             .state('map', {
-                url: "/map/@{lat},{lng},{zoom}?left-panel&right-panel",
+                url: "/map",
                 //url: "/map",
                 templateUrl: "itc_projects/app/templates/map.html",
                 controller: 'MapCtrl'
