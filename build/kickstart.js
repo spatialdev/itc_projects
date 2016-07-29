@@ -29,6 +29,12 @@ angular.module('myApp', [
 
     })
 
+
+angular.module('myApp.config', [])
+
+    .constant('ACCESS_TOKEN', 'pk.eyJ1Ijoic3BhdGlhbGRldiIsImEiOiJKRGYyYUlRIn0.PuYcbpuC38WO6D1r7xdMdA' );
+
+
 var app = angular.module("myApp")
     .service("dataService", ['$http', '$q', function ($http, $q, ENV) {
 
