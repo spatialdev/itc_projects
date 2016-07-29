@@ -7,11 +7,11 @@ angular.module('myApp', [
 ]).
     config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, jwtInterceptorProvider) {
 
-        $urlRouterProvider.otherwise("/map/@9.8320,16.8734,2.38");
+        $urlRouterProvider.otherwise("/map");
 
         $stateProvider
             .state('map', {
-                url: "/map/@{lat},{lng},{zoom}?left-panel&right-panel",
+                url: "/map",
                 //url: "/map",
                 templateUrl: "itc_projects/app/templates/map.html",
                 controller: 'MapCtrl'
@@ -73,17 +73,17 @@ var app = angular.module("myApp")
             mapService.map = map;
 
             //set state params if empty
-            if ($stateParams.lat === '' || $stateParams.lng === '' || $stateParams.zoom === '' || $stateParams.style === '') {
-                $stateParams.lat = $stateParams.lat || 47.6201;
-                $stateParams.lng = $stateParams.lng || -122.3519;
-                $stateParams.zoom = $stateParams.zoom || 9.34;
-            }
+            //if ($stateParams.lat === '' || $stateParams.lng === '' || $stateParams.zoom === '' || $stateParams.style === '') {
+            //    $stateParams.lat = $stateParams.lat || 47.6201;
+            //    $stateParams.lng = $stateParams.lng || -122.3519;
+            //    $stateParams.zoom = $stateParams.zoom || 9.34;
+            //}
 
             // set map zoom
-            mapService.map.setZoom($stateParams.zoom);
+            mapService.map.setZoom(2.38);
 
             // set the map center
-            mapService.map.setCenter([$stateParams.lng, $stateParams.lat]);
+            mapService.map.setCenter([9.8320, 16.8734]);
 
             // update the url if it was empty of lat,lng,zoom or style params
             if ($stateParams.lat === '' || $stateParams.lng === '' || $stateParams.zoom === '' || $stateParams.style === '') {
@@ -102,25 +102,25 @@ var app = angular.module("myApp")
 
             //when the map stops moving do this
             mapService.map.on('move', function () {
-                var lat = map.getCenter().lat.toFixed(4);
-                var lng = map.getCenter().lng.toFixed(4);
-                var zoom = map.getZoom().toFixed(2);
-
-                if ($stateParams.lat !== lat || $stateParams.lng !== lng || $stateParams.zoom !== zoom) {
-                    $stateParams.lat = lat;
-                    $stateParams.lng = lng;
-                    $stateParams.zoom = zoom;
-                    $state.go('map', $stateParams, {
-                        // prevent the events onStart and onSuccess from firing
-                        notify: false,
-                        // prevent reload of the current state
-                        reload: false,
-                        // replace the last record when changing the params so you don't hit the back button and get old params
-                        location: 'replace',
-                        // inherit the current params on the url
-                        inherit: true
-                    })
-                }
+                //var lat = map.getCenter().lat.toFixed(4);
+                //var lng = map.getCenter().lng.toFixed(4);
+                //var zoom = map.getZoom().toFixed(2);
+                //
+                //if ($stateParams.lat !== lat || $stateParams.lng !== lng || $stateParams.zoom !== zoom) {
+                //    $stateParams.lat = lat;
+                //    $stateParams.lng = lng;
+                //    $stateParams.zoom = zoom;
+                //    $state.go('map', $stateParams, {
+                //        // prevent the events onStart and onSuccess from firing
+                //        notify: false,
+                //        // prevent reload of the current state
+                //        reload: false,
+                //        // replace the last record when changing the params so you don't hit the back button and get old params
+                //        location: 'replace',
+                //        // inherit the current params on the url
+                //        inherit: true
+                //    })
+                //}
             });
         };
 
