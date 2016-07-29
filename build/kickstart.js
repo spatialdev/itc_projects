@@ -7,7 +7,7 @@ angular.module('myApp', [
 ]).
     config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, jwtInterceptorProvider) {
 
-        $urlRouterProvider.otherwise("/map/@47,-122,2");
+        $urlRouterProvider.otherwise("/map/@9.8320,16.8734,2.38");
 
         $stateProvider
             .state('map', {
